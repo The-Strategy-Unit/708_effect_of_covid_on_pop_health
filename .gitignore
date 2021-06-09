@@ -1,0 +1,23 @@
+# History files
+.Rhistory
+
+# Session data files
+.RData
+
+# User-specific files
+.Ruserdata
+
+# RStudio files
+.Rproj.user/
+
+# Folders
+/_posted/
+/_rawData/
+/admin/
+/bookshelf/
+/outputs/
+/-toDelete/
+/-toFile/
+
+#
+research_notebook.md
