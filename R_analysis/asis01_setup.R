@@ -56,6 +56,7 @@ library("knitr")
 library("treemapify")
 library("heatwaveR")
 library("ggtext")
+library("rmarkdown")
 # library("ISOweek")  # not loaded
 # library("zoo")  # not loaded
 # library("scales")  # not loaded
@@ -70,7 +71,7 @@ inOffice      <- TRUE
 .testDir      <- paste0(.projDir, "R_tests/")
 .figDir       <- paste0(.projDir, "figures/")
 
-# setwd(.projDir)
+setwd(.asisDir)
 
 # fonts
 library("extrafont")
@@ -79,17 +80,17 @@ loadfonts(device = "pdf", quiet = TRUE)
 Sys.setenv(R_GSCMD = "C:/Program Files/gs/gs9.53.3/bin/gswin64c.exe")
 
 # functions
-source("./../R_functions/helper_funs.R")
-source("./../R_functions/fx_clean_weekly_deaths_dat.R")
-source("./../R_functions/lookup_age_group.R")
-source("./../R_functions/fx_interpolate_exposure.R")
-source("./../R_functions/fx_date_helper_funs.R")
-source("./../R_functions/fx_covid_yll_helper_funs.R")
-source("./../R_functions/fx_quantile_funs.R")
-source("./../R_functions/fx_model_lm_qx.R")
+source("../R_functions/helper_funs.R")
+source("../R_functions/fx_clean_weekly_deaths_dat.R")
+source("../R_functions/lookup_age_group.R")
+source("../R_functions/fx_interpolate_exposure.R")
+source("../R_functions/fx_date_helper_funs.R")
+source("../R_functions/fx_covid_yll_helper_funs.R")
+source("../R_functions/fx_quantile_funs.R")
+source("../R_functions/fx_model_lm_qx.R")
 
 # set default theme
-source("./../R_functions/theme_708.R")
+source("../R_functions/theme_708.R")
 setup_env$theme_report_output <- theme_708
 theme_set(setup_env$theme_report_output())
 

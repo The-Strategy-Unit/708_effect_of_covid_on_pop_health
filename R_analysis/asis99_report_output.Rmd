@@ -163,8 +163,7 @@ ggplot() +
 Excess mortality or excess deaths is a more comprehensive measure of the overall impact of the coronavirus pandemic on deaths than the confirmed Covid-19 death count alone. In a pandemic, deaths can rise sharply, but causes are often inaccurately recorded, particularly when reliable tests are not widely available. Excess deaths will capture Covid-19 deaths that were undiagnosed or not reported but will also include less direct effects of the virus &mdash; including deaths from other health conditions left untreated if the health system is overwhelmed by Covid-19 cases or by deliberate actions that prioritise patients with Covid-19 over those with other symptoms; the mortality effects of societal responses to the pandemic, like social distancing, and the secondary consequences of those responses, such as reduced economic activity.
 
 ```{r covid-effects, fig.cap="Excess mortality is influenced by many factors", fig.topcaption=TRUE, out.width="100%", out.extra='style="margin-bottom:20px;"'}
-knitr::include_graphics(
-"./../figures/covid_effects.png", dpi = 180)
+knitr::include_graphics(str_c(.figDir, "covid_effects.png"), dpi = 180)
 ```
 
 The concept of excess deaths is especially useful when considering international comparisons. Excess deaths are measured relative to a benchmark of 'normal' deaths. Normal death rates reflect persistent factors that differ between countries such as the age composition of the population, the incidence of smoking and air pollution, the prevalence of obesity, poverty and inequality, and the quality of health service provision. Excess death rates therefore account for heterogeneity between countries, which makes them the best way of picking up the differential effects of a pandemic. A number of statistical and media agencies have invested considerable resource in comparing the evolution of excess mortality across different countries, including the ONS, the Financial Times, the Economist, the New York Times, and EuroMOMO.[@noauthor_comparisons_nodate; @noauthor_coronavirus_nodate-1; @wu_pandemics_nodate; @noauthor_graphs_nodate]
@@ -728,4 +727,5 @@ ggplot(leSeriesPlotDat) +
 ```
 
 # References
+
 
