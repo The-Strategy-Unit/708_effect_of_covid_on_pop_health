@@ -62,7 +62,7 @@ library("rmarkdown")
 # library("scales")  # not loaded
 
 # directories
-inOffice      <- TRUE
+inOffice      <- FALSE
 .baseDir      <- ifelse(inOffice, "Z:/Strategic Analytics/Projects 2020/", "C:/Projects/")
 .projDir      <- paste0(.baseDir, "708_effect_of_covid_on_pop_health/")
 .rawDir       <- paste0(.projDir, "_rawData/")
