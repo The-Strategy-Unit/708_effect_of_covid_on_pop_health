@@ -180,6 +180,7 @@ gamPoi <- gam(
 
 # (3c) FluMOMO model
 # GLM with ...
+# see Arburto paper and scripts (OxfordDemSci-Excess-Deaths-d848e43.zip)
 glmFm <- glm(
   dths ~
     # public holidays
