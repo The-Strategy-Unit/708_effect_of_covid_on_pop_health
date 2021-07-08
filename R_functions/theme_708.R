@@ -96,7 +96,7 @@ theme_708 <- function(base_size = 12.5, base_family = "Fira Sans") {
     # , plot.background = element_rect(fill = "#f8f8f7", colour = NA)
     , plot.title =      element_text(size = rel(1.0), hjust = 0, vjust = 1, margin = margin(b = half_line * .8))
     , plot.title.position = "plot"
-    , plot.subtitle =   element_text(colour = "#686f73", size = rel(.8), hjust = 0, vjust = 1)
+    , plot.subtitle =   element_text(colour = "#686f73", size = rel(1), hjust = 0, vjust = 1)
     , plot.caption =    element_text(size = rel(.8), hjust = 0, vjust = 1, margin = margin(t = half_line * 2), colour = "#686f73")
     , plot.caption.position = "plot"
     , plot.margin =     margin(half_line, half_line, half_line, half_line)

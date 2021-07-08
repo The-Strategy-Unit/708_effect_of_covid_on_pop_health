@@ -14,7 +14,7 @@
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="covid_effects.svg"
-   inkscape:export-filename="Z:\Strategic Analytics\Projects 2020\708_effect_of_covid_on_pop_health\figures\covid_effects.png"
+   inkscape:export-filename="C:\Projects\708_effect_of_covid_on_pop_health\figures\covid_effects.png"
    inkscape:export-xdpi="180.16528"
    inkscape:export-ydpi="180.16528">
   <defs
@@ -34,9 +34,9 @@
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="3840"
-     inkscape:window-height="2050"
-     inkscape:window-x="-12"
-     inkscape:window-y="-12"
+     inkscape:window-height="2066"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -62,7 +62,7 @@
        x="4.3784704"
        y="6.2983685" />
     <rect
-       style="fill:#ffffff;fill-rule:evenodd;stroke:#f9bf07;stroke-width:0.315;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#5881c1;stroke-width:0.315;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect10-97-7"
        width="41.852215"
        height="26.102217"
@@ -155,48 +155,38 @@
          y="40.85973" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.29306px;line-height:1.5;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2c2825;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.29306px;line-height:1.5;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2c2825;fill-opacity:1;stroke:none;stroke-width:0.264583;"
        x="78.314056"
        y="27.101364"
        id="text864-5"><tspan
          sodipodi:role="line"
-         id="tspan1128"
-         x="78.314056"
-         y="27.101364">Increased mortality from needed</tspan><tspan
+         id="tspan885">Increased mortality from needed</tspan><tspan
          sodipodi:role="line"
-         id="tspan1130"
-         x="78.314056"
-         y="30.540955">  health care being delayed or</tspan><tspan
+         id="tspan887">  health care being delayed or</tspan><tspan
          sodipodi:role="line"
-         id="tspan1132"
-         x="78.314056"
-         y="33.980545">  deferred. Both from reduced supply</tspan><tspan
+         id="tspan889">  deferred. Both from reduced supply</tspan><tspan
          sodipodi:role="line"
-         id="tspan1134"
-         x="78.314056"
-         y="37.420135">  (can effect cases and general</tspan><tspan
+         id="tspan891">  (can affect cases and general</tspan><tspan
          sodipodi:role="line"
-         id="tspan1136"
-         x="78.314056"
-         y="40.859726">  population) and reduced health</tspan><tspan
+         id="tspan893">  population) and reduced health</tspan><tspan
          sodipodi:role="line"
-         id="tspan1138"
-         x="78.314056"
-         y="44.299316">  seeking behaviour.</tspan></text>
+         id="tspan895">  seeking behaviour.</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.29306px;line-height:1.5;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2c2825;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.29306px;line-height:1.5;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2c2825;fill-opacity:1;stroke:none;stroke-width:0.264583;"
        x="131.62189"
        y="27.101368"
        id="text864-5-3"><tspan
          sodipodi:role="line"
-         id="tspan1061"
-         x="131.62189"
-         y="27.101368">Negative impacts on mental health</tspan><tspan
+         id="tspan961">Negative impacts on mental health</tspan><tspan
          sodipodi:role="line"
-         id="tspan1063"
-         x="131.62189"
-         y="30.540958">  from e.g. anxiety, economic hardship.</tspan></text>
+         id="tspan963">  and well-being from e.g. anxiety,</tspan><tspan
+         sodipodi:role="line"
+         id="tspan965">  economic hardship.</tspan><tspan
+         sodipodi:role="line"
+         id="tspan967">Exacerbation of pre-existing socio-</tspan><tspan
+         sodipodi:role="line"
+         id="tspan969">  economic and health inequalities</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.29306px;line-height:1.5;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2c2825;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -233,7 +223,7 @@
          y="81.155807">  pollution.</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.29306px;line-height:1.25;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#f9bf07;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:2.29306px;line-height:1.25;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#5881c1;fill-opacity:1;stroke:none;stroke-width:0.264583;"
        x="6.8493361"
        y="69.345863"
        id="text864-7"><tspan
@@ -272,14 +262,14 @@
          x="45.954342"
          y="89.746239">... some of these effects will be immediate, some will only become apparent over a longer period.</tspan></text>
     <rect
-       style="fill:#ffffff;fill-rule:evenodd;stroke:#f9bf07;stroke-width:0.315;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#5881c1;stroke-width:0.315;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect10-8"
        width="41.852215"
        height="26.102217"
        x="24.459135"
        y="57.064075" />
     <rect
-       style="fill:#ffffff;fill-rule:evenodd;stroke:#f9bf07;stroke-width:0.315;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#5881c1;stroke-width:0.315;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect10-0"
        width="41.852215"
        height="26.102217"
@@ -301,25 +291,19 @@
          y="64.106903">  caused by medical activity).</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.29306px;line-height:1.5;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2c2825;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.29306px;line-height:1.5;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2c2825;fill-opacity:1;stroke:none;stroke-width:0.264583;"
        x="26.058098"
        y="60.518265"
        id="text864-5-2-6"><tspan
          sodipodi:role="line"
-         id="tspan894"
-         x="26.058098"
-         y="60.518265">Lower mortality because some frail</tspan><tspan
+         id="tspan894">Lower mortality because some frail</tspan><tspan
          sodipodi:role="line"
-         id="tspan896"
-         x="26.058098"
-         y="63.957855">  individuals who would have died</tspan><tspan
+         id="tspan896">  individuals who would have died</tspan><tspan
          sodipodi:role="line"
-         id="tspan898"
-         x="26.058098"
-         y="67.397446">  from other conditions died earlier</tspan><tspan
+         id="tspan898">  from other conditions died earlier</tspan><tspan
          sodipodi:role="line"
-         id="tspan900"
-         x="26.058098"
-         y="70.837036">  from Covid-19 instead.</tspan></text>
+         id="tspan900">  from Covid-19 instead (applies to</tspan><tspan
+         sodipodi:role="line"
+         id="tspan902">  period after the first wave).</tspan></text>
   </g>
 </svg>

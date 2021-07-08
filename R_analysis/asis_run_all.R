@@ -1,6 +1,6 @@
 
 # render to html in /docs directory
-# rmarkdown::render(input = "../R_analysis/asis99_report_output.Rmd", output_file = "index.html", output_dir = "../docs/")
+# rmarkdown::render(input = "../R_analysis/asis90_report_output.Rmd", output_file = "index.html", output_dir = "../docs/")
 
 # build scripts
 source("./R_analysis/asis01_setup.R")

@@ -57,9 +57,13 @@ library("treemapify")
 library("heatwaveR")
 library("ggtext")
 library("rmarkdown")
+library("magick")
 # library("ISOweek")  # not loaded
 # library("zoo")  # not loaded
 # library("scales")  # not loaded
+
+# for use with kableExtra::save_kable()
+# webshot::install_phantomjs()
 
 # directories
 inOffice      <- FALSE
