@@ -50,9 +50,11 @@ print_num <- function(x, d = 0) {
 ```
 
 # Introduction 
-Considerable effort has been directed to track the severity and public health impact of coronavirus disease 2019 (Covid-19). Understanding the mortality impact of Covid-19 both over time and between countries is vital for distinguishing the relative effectiveness of different prevention and control measures, including vaccines. The efforts of individuals like John-Burn Murdoch, creator of the Financial Times' coronavirus trajectory tracker charts,[@noauthor_coronavirus_nodate] are to be commended and have undoubtedly helped people attempt to make sense of what's happening in a fast-changing situation. 
+Considerable effort has been directed to track the severity and public health impact of coronavirus disease 2019 (Covid-19). Understanding the mortality impact of Covid-19 both over time and between countries is vital for distinguishing the relative effectiveness of different prevention and control measures, including vaccines. The efforts of individuals like John-Burn Murdoch, creator of the Financial Times' coronavirus trajectory tracker charts,[@noauthor_coronavirus_nodate] are to be commended and have undoubtedly helped people attempt to make sense of what is happening in a fast-changing situation. 
 
-As the most direct indicator of mortality much attention has been given to the number of deaths caused by Covid-19; but within the field of public health there are established measures that can help provide a fuller picture of the mortality burden of Covid-19. This report begins by explaining the different sources of information on Covid-19 deaths before comparing approaches to estimating 'excess deaths' &mdash; a better, more complete measure of the coronavirus pandemic's overall mortality impact. In the second half of the report, we implement a set of actuarial and public health metrics &mdash; standardised death rates, years-of-life-lost and life expectancy &mdash; that offer a different perspective on the pandemic's effect on population health.
+As the most direct indicator of mortality much attention has been given to the number of deaths caused by Covid-19; but within the field of public health there are established measures that can help provide a fuller picture of the mortality burden of Covid-19.
+
+This report begins by explaining the different sources of information on Covid-19 deaths before comparing approaches to estimating 'excess deaths' &mdash; a better, more complete measure of the coronavirus pandemic's overall mortality impact. In the second half of the report, we implement a set of actuarial and public health metrics &mdash; standardised death rates, years-of-life-lost and life expectancy &mdash; that offer a different perspective on the pandemic's effect on population health.
 
 ```{r read}
 # read data
@@ -102,22 +104,35 @@ pct75Plus <- scales::percent(pct75Plus, accuracy = 1)
 ```
 
 # How many people have died from Covid-19?
-The infection fatality ratio (IFR; the proportion of those infected who will go on to die from that infection) is a key statistic for estimating the burden of Covid-19 and estimates have continuously been updated throughout the current pandemic. The overall IFR will vary across different populations as it depends on factors such as the age distribution of the population, the distribution of infection across age groups, and access to healthcare resources. After reviewing multiple seroprevalence studies (where blood tests are used to identify how many people have antibodies against the SARS-CoV-2 virus) from different countries the Covid-19 response team at Imperial College estimated the overall IFR for a typical high income country, with a greater concentration of elderly individuals, to be 1.15% (0.78&ndash;1.79 95% prediction interval range).[@noauthor_report_nodate] Over time improvements in care and potential genetic mutations in the virus[@challen_risk_2021] have the potential to alter the IFR.
+The infection fatality ratio (IFR &mdash; the proportion of those infected who will go on to die from that infection) is a key statistic for estimating the burden of Covid-19. Estimates have continuously been updated throughout the current pandemic. The overall IFR will vary across different populations as it depends on factors such as the age distribution of the population, the distribution of infection across age groups, and access to healthcare resources.
+
+After reviewing multiple seroprevalence studies (where blood tests are used to identify how many people have antibodies against the SARS-CoV-2 virus) from different countries the Covid-19 response team at Imperial College estimated the overall IFR for a typical high income country, with a greater concentration of elderly individuals, to be 1.15% (0.78&ndash;1.79 95% prediction interval range).[@noauthor_report_nodate] Over time improvements in care and potential genetic mutations in the virus[@challen_risk_2021] have the potential to alter the IFR.
 
 ## Covid-19 deaths data
-There are two broad ways of counting Covid-19 deaths in the UK: statistics reported through health and care organisations, usually focused on cases where a positive test for Covid-19 has been confirmed, and statistics reported through the process of death registration, where Covid-19 appears on the death certificate. Differences in the timeliness and coverage of these sources were not always well explained and changes to the methodology used by the government for daily surveillance reporting did not help in this regard.
+There are two broad ways of counting Covid-19 deaths in the UK:
+
++ statistics reported through health and care organisations, usually focused on cases where a positive test for Covid-19 has been confirmed; and
++ statistics reported through the process of death registration, where Covid-19 appears on the death certificate.
+
+Differences in the timeliness and coverage of these sources were not always well explained and changes to the methodology used by the government for daily surveillance reporting did not help in this regard.
 
 The main sources of Covid-19 deaths data are:
 
-1. Public Health England (PHE) publish daily surveillance figures on deaths of people who died within 28 days of a first positive test for Covid-19.[@public_health_england_deaths_2021] The daily number represents new deaths reported to PHE by public health bodies in the 24 hours up to 5pm the previous day. From 29 April 2020, these are based (for England) on improved data, which provide a count of all deaths where a positive test for Covid-19 has been confirmed, wherever the death took place. Prior to this, the series did not include those who died outside of hospital settings e.g. in a care home. The 28-day cut-off was only introduced in August, before this time PHE reported deaths of all people with a confirmed positive test at any point since the start of the pandemic. 
-2. NHS England (NHSE) publish a daily count of people who died in hospitals in England and had either tested positive for Covid-19 or where Covid-19 was mentioned on the death certificate.[@nhs_england_covid-19_2021] The daily count contains deaths from the latest reporting period, 4pm two days prior to publication until 4pm the day before publication. From 28 April 2020, this series changed to include deaths where Covid-19 was mentioned on the death certificate. These figures do not include deaths outside hospital, such as those in care homes.
-3. The Office for National Statistics (ONS) publish weekly deaths data for England and Wales, released every Tuesday at 9:30am for the week that ended 11 days prior (for example, data for the week ending 20 March 2020 were released on 31 March 2020).[@office_for_national_statistics_deaths_2021] These are based on registrations of deaths where confirmed or suspected Covid-19 was mentioned on the death certificate, wherever the death took place. Death certification as involving Covid-19 does not depend on a positive test.
+1. Public Health England (PHE) publish daily surveillance figures on deaths of people who died within 28 days of a first positive test for Covid-19.[@public_health_england_deaths_2021] The daily number represents new deaths reported to PHE by public health bodies in the 24 hours up to 5pm the previous day. From 29th April 2020, these are based (for England) on improved data, which provide a count of all deaths where a positive test for Covid-19 has been confirmed, wherever the death took place. Prior to this, the series did not include those who died outside of hospital settings e.g. in a care home. The 28-day cut-off was only introduced in August, before this time PHE reported deaths of all people with a confirmed positive test at any point since the start of the pandemic.
+2. NHS England (NHSE) publish a daily count of people who died in hospitals in England and had either tested positive for Covid-19 or where Covid-19 was mentioned on the death certificate.[@nhs_england_covid-19_2021] The daily count contains deaths from the latest reporting period, 4pm two days prior to publication until 4pm the day before publication. From 28th April 2020, this series changed to include deaths where Covid-19 was mentioned on the death certificate. These figures do not include deaths outside hospital, such as those in care homes.
+3. The Office for National Statistics (ONS) publish weekly deaths data for England and Wales, released every Tuesday at 9:30am for the week that ended 11 days prior (for example, data for the week ending 20th March 2020 were released on 31st March 2020).[@office_for_national_statistics_deaths_2021] These are based on registrations of deaths where confirmed or suspected Covid-19 was mentioned on the death certificate, wherever the death took place. Death certification as involving Covid-19 does not depend on a positive test.
 
-These measures are collected for different purposes with different strengths and weaknesses. Counting deaths in people who have laboratory-confirmed infection does not require a judgement to be made about cause of death, which means figures can be collected more quickly &mdash; making it more useful for real-time surveillance. Surveillance reporting, however, is not designed to provide definitive information on the significance of Covid-19 as a cause of individual deaths. For example, in the early stages of the pandemic, there were deaths where Covid-19 was suspected but not confirmed by testing; for some patients testing positive for Covid-19 may be incidental or even unconnected to the cause of death. Mortality statistics published by the ONS rely on information recorded when deaths are certified and registered. These are published weekly but the death registration process means their availability is delayed. The certification of death includes a clinical assessment by a medical practitioner (often the patient's GP) of the reason for death; registrations of deaths where confirmed or suspected Covid-19 was mentioned on the death certificate provide the most objective measurement of deaths from Covid-19.
+These measures are collected for different purposes with different strengths and weaknesses. Counting deaths in people who have laboratory-confirmed infection does not require a judgement to be made about cause of death; this means figures can be collected more quickly, making it more useful for real-time surveillance.
+
+Surveillance reporting, however, is not designed to provide definitive information on the significance of Covid-19 as a cause of individual deaths. For example, in the early stages of the pandemic, there were deaths where Covid-19 was suspected but not confirmed by testing; for some patients testing positive for Covid-19 may be incidental or even unconnected to the cause of death.
+
+Mortality statistics published by the ONS rely on information recorded when deaths are certified and registered. These are published weekly but the death registration process means their availability is delayed. The certification of death includes a clinical assessment by a medical practitioner (often the patient's GP) of the reason for death. Registrations of deaths where confirmed or suspected Covid-19 was mentioned on the death certificate provide the most objective measurement of deaths from Covid-19.
 
 Prompt and accurate certification of death is essential as it serves a number of functions. In addition to providing the decedent's family with a cause of death, it has critical administrative and epidemiologic applications. In the UK, a medical certificate of cause of death is set out in two parts, in accordance with World Health Organisation recommendations. In part one the completing doctor identifies the underlying cause of death as 'a) the disease or injury which initiated the train of morbid events leading directly to death, or b) the circumstances of the accident or violence which produced the fatal injury'. Any other diseases, injuries, conditions, or events that contributed to the death, but were not part of the direct sequence are captured in part two. 
 
-Most routine mortality statistics are based on the underlying cause, but the Covid-19 deaths numbers reported in the ONS weekly deaths data are for deaths 'involving Covid-19' &mdash; deaths that had Covid-19 mentioned anywhere on the death certificate, whether as an underlying cause or a contributory factor. For a subset of these deaths Covid-19 will have been identified as the underlying cause. According to the ONS, in around 90% of all deaths with Covid-19 mentioned on the death certificate it is recorded as the underlying cause of death.[@noauthor_quality_nodate] All ONS deaths data used in this report relate to this wider measure of deaths involving Covid-19.
+Most routine mortality statistics are based on the underlying cause, but the Covid-19 deaths numbers reported in the ONS weekly deaths data are for deaths 'involving Covid-19' &mdash; deaths that had Covid-19 mentioned anywhere on the death certificate, whether as an underlying cause or a contributory factor.
+
+For a subset of these deaths Covid-19 will have been identified as the underlying cause. According to the ONS, in around 90% of all deaths with Covid-19 mentioned on the death certificate it is recorded as the underlying cause of death.[@noauthor_quality_nodate] All ONS deaths data used in this report relate to this wider measure of deaths involving Covid-19.
 
 >In the calendar year 2020 there were `r print_num(yx2020CovidDths)` deaths involving Covid-19 &mdash; `r print_num(yx2020CovidDthsPc)` of the total `r print_num(yx2020Dths)` deaths that occurred in England & Wales.
 
@@ -169,32 +184,42 @@ ggplot() +
 ## Excess mortality
 >Excess mortality is a term used in epidemiology and public health that refers to the number of deaths from all causes during a crisis above and beyond what we would have expected to see under 'normal' conditions.[@checchi_interpreting_2005]
 
-Excess mortality or excess deaths is a more comprehensive measure of the overall impact of the coronavirus pandemic on deaths than the confirmed Covid-19 death count alone. In a pandemic, deaths can rise sharply, but causes are often inaccurately recorded, particularly when reliable tests are not widely available. Excess deaths will capture Covid-19 deaths that were undiagnosed or not reported but will also include less direct effects of the virus &mdash; including deaths from other health conditions left untreated if the health system is overwhelmed by Covid-19 cases or by deliberate actions that prioritise patients with Covid-19 over those with other symptoms; the mortality effects of societal responses to the pandemic, like social distancing, and the secondary consequences of those responses, such as reduced economic activity.
+Excess mortality or excess deaths is a more comprehensive measure of the overall impact of the coronavirus pandemic on deaths than the confirmed Covid-19 death count alone. In a pandemic, deaths can rise sharply, but causes are often inaccurately recorded, particularly when reliable tests are not widely available.
+
+Excess deaths will capture Covid-19 deaths that were undiagnosed or not reported but will also include less direct effects of the virus, including:
+
++ deaths from other health conditions left untreated if the health system is overwhelmed by Covid-19 cases or by deliberate actions that prioritise patients with Covid-19 over those with other symptoms;
++ the mortality effects of societal responses to the pandemic, like social distancing; and
++ the secondary consequences of those responses, such as reduced economic activity.
+
+These factors are summarised in Figure \@ref(fig:covid-effects).
 
 ```{r covid-effects, fig.cap="Excess mortality is influenced by many factors", fig.topcaption=TRUE, out.width="100%", out.extra='style="margin-bottom:20px;"'}
 knitr::include_graphics(str_c(.figDir, "covid_effects.png"), dpi = 180)
 ```
 
-The concept of excess deaths is especially useful when considering international comparisons. Excess deaths are measured relative to a benchmark of 'normal' deaths. Normal death rates reflect persistent factors that differ between countries such as the age composition of the population, the incidence of smoking and air pollution, the prevalence of obesity, poverty and inequality, and the quality of health service provision. Excess death rates therefore account for heterogeneity between countries, which makes them the best way of picking up the differential effects of a pandemic. A number of statistical and media agencies have invested considerable resource in comparing the evolution of excess mortality across different countries, including the ONS, the Financial Times, the Economist, the New York Times, and EuroMOMO.[@noauthor_comparisons_nodate; @noauthor_coronavirus_nodate-1; @wu_pandemics_nodate; @noauthor_graphs_nodate]
+The concept of excess deaths is especially useful when considering international comparisons. Excess deaths are measured relative to a benchmark of 'normal' deaths. Normal death rates reflect persistent factors that differ between countries such as the age composition of the population, the incidence of smoking and air pollution, the prevalence of obesity, poverty and inequality, and the quality of health service provision.
+
+Excess death rates therefore account for heterogeneity between countries, which makes them the best way of picking up the differential effects of a pandemic. A number of statistical and media agencies have invested considerable resource in comparing the evolution of excess mortality across different countries, including the ONS, the Financial Times, the Economist, the New York Times, and EuroMOMO.[@noauthor_comparisons_nodate; @noauthor_coronavirus_nodate-1; @wu_pandemics_nodate; @noauthor_graphs_nodate]
 
 ## Measurement of 'normal' or expected deaths
-Most national statistical agencies, including the ONS, publish averages of past 'normal' deaths alongside up-to-date actual death counts. The ONS use a five-year average of deaths in the corresponding week, but it could be a shorter or longer period or even deaths in the same week from the previous year. While a 5-year average is both transparent and simple to calculate it may not provide an unbiased counterfactual (how many deaths would have occurred under different circumstances) against which to compare current year deaths. A five-year average ignores trends in mortality rates, changes in population size and changes in population age structure. Total annual deaths in England & Wales for the five-year's up to 2020 fluctuated between a low of 524 thousand (2016) and a high of 539 thousand (2018).  
+Most national statistical agencies, including the ONS, publish averages of past 'normal' deaths alongside up-to-date actual death counts. The ONS use a five-year average of deaths in the corresponding week, but it could be a shorter or longer period or even deaths in the same week from the previous year.
 
-To understand the effect of these different choices and establish a plausible range for Covid-19 excess mortality, we compare the results from three alternative methods for estimating 'normal' or expected deaths. Each method generates a different estimate of how many deaths might have occurred in the absence of the coronavirus pandemic.
+While a five-year average is both transparent and simple to calculate it may not provide an unbiased counterfactual (how many deaths would have occurred under different circumstances) against which to compare current year deaths. A five-year average ignores trends in mortality rates, changes in population size and changes in population age structure. Total annual deaths in England & Wales for the five-year's up to 2020 fluctuated between a low of 524 thousand (2016) and a high of 539 thousand (2018).  
+
+To understand the effect of these different choices and establish a plausible range for Covid-19 excess mortality, here we compare the results from three alternative methods for estimating 'normal' or expected deaths. Each method generates a different estimate of how many deaths might have occurred in the absence of the coronavirus pandemic.
 
 <span class="bolded">Methods for estimating expected deaths</span>
 
-1. A simple 5-year average of deaths in the corresponding week.
+1. A simple five-year average of deaths in the corresponding week.
 2. Deaths from the corresponding week in 2019.
 3. Fit a statistical model to deaths in previous years and use the model to predict 'normal' deaths.
 
-Weekly death counts follow a strong seasonal pattern, with larger numbers of deaths seen around the start and end of each year. Deaths by date of registration will also be lower in weeks containing public holidays as Register Offices are closed so fewer deaths are registered; but unlike deaths by date of occurrence they are not subject to revision when new data is released hence our preference to use them in this analysis. Like any real-world phenomena, the number of deaths each week are affected by random variation or noise from chance factors that cannot be identified. Probability theory can provide an estimate for the scale of chance variation. Count data, like weekly death numbers, typically follow a Poisson distribution &mdash; meaning, for example, if we expect 10,000 deaths in an average week, then a deviation of +/- 200 in any individual week would not be unexpected. Over a longer period, numbers of deaths will be affected by changes in the size and age composition of the population as well as trends in mortality rates.
+Weekly death counts follow a strong seasonal pattern, with larger numbers of deaths seen around the start and end of each year. Deaths by date of registration will also be lower in weeks containing public holidays as Register Offices are closed so fewer deaths are registered; but unlike deaths by date of occurrence they are not subject to revision when new data is released hence our preference to use them in this analysis.
 
-Figure \@ref(fig:deaths-last-5-years) compares weekly deaths in 2020 and the first half of 2021 with levels for the previous 5 years. These are averaged to obtain our first estimate of 'normal' deaths against which to compare deaths during the pandemic.
+Like any real-world phenomena, the number of deaths each week are affected by random variation or noise from chance factors that cannot be identified. Probability theory can provide an estimate for the scale of chance variation. Count data, like weekly death numbers, typically follow a Poisson distribution. This means, for example, if we expect 10,000 deaths in an average week, then a deviation of +/&ndash; 200 in any individual week would not be unexpected. Over a longer period, numbers of deaths will be affected by changes in the size and age composition of the population as well as trends in mortality rates.
 
-Figure \@ref(fig:deaths-last-year) compares deaths in 2020 and 2021 with deaths in 2019 (the last full year unaffected by Covid-19). Deaths in the early weeks of 2020, before the pandemic struck, were very similar to those from 2019.
-
-Predicted weekly deaths generated from our statistical model are shown in Figure \@ref(fig:model-dths). The model used was a Poisson regression time-series model similar to the FluMOMO model^[The model is a generalized linear model regression on weekly deaths assuming a Poisson distribution, adjusted for long-term trend and featuring trigonometric terms for the seasonal effect.] widely used to estimate influenza-attributable mortality.[@nielsen_influenza-associated_2018]
+Figure \@ref(fig:deaths-last-5-years) compares weekly deaths in 2020 and the first half of 2021 with levels for the previous five years. These are averaged to obtain our first estimate of 'normal' deaths against which to compare deaths during the pandemic.
 
 ```{r deaths-last-5-years, fig.cap="The numbers of all-cause deaths in Spring 2020 and Winter 2020-21 <br> were dramatically increased compared with recent years", fig.topcaption=TRUE}
 plotDat <- wkDthsTot %>%
@@ -231,6 +256,8 @@ ggplot(plotDat) +
   theme(plot.subtitle = element_markdown())
 ```
 
+Figure \@ref(fig:deaths-last-year) compares deaths in 2020 and 2021 with deaths in 2019 (the last full year unaffected by Covid-19). Deaths in the early weeks of 2020, before the pandemic struck, were very similar to those from 2019.
+
 ```{r deaths-last-year, fig.cap="Deaths in the early part of 2020 were very similar to levels in 2019", fig.topcaption=TRUE}
 plotDat <- wkDthsTot %>%
   filter(isoYr %in% c(2019, 2020, 2021)) %>%
@@ -250,6 +277,8 @@ ggplot(plotDat) +
        , subtitle = subtitle_lab) +
   theme(plot.subtitle = element_markdown())
 ```
+
+Predicted weekly deaths generated from our statistical model are shown in Figure \@ref(fig:model-dths). The model used was a Poisson regression time-series model similar to the FluMOMO model^[The model is a generalized linear model regression on weekly deaths assuming a Poisson distribution, adjusted for long-term trend and featuring trigonometric terms for the seasonal effect.] widely used to estimate influenza-attributable mortality.[@nielsen_influenza-associated_2018]
 
 ```{r model-dths, fig.cap="A statistical model can generate a prediction of 'normal' deaths <br> against which to measure the impact of the coronavirus pandemic", fig.topcaption=TRUE}
 plotDat <- wkDthsTot %>%
@@ -275,13 +304,15 @@ ggplot(plotDat) +
   theme(plot.subtitle = element_markdown())
 ```
 
-There is some uncertainty over when the first death from Covid-19 occurred. Following an inquest, a coroner announced in September that a patient in England died with Covid-19 in January 2020. Until then, the earliest known death involving Covid-19 was thought to be on 2 March. For our excess deaths calculations, we take the start date of the pandemic to be week 10 (week ending 6 March, the first week in which the PHE data records a death within 28 days of a positive test for Covid-19). To aid reporting, we have divided time since the pandemic began in to three periods to reflect two distinct waves of deaths separated by a 'Summer lull'.
+There is some uncertainty over when the first death from Covid-19 occurred. Following an inquest, a coroner announced in September that a patient in England died with Covid-19 in January 2020. Until then, the earliest known death involving Covid-19 was thought to be on 2nd March. For our excess deaths calculations, we take the start date of the pandemic to be week 10 (week ending 6th March, the first week in which the PHE data records a death within 28 days of a positive test for Covid-19).
 
-1. A <span class="bolded">first wave</span> that starts in week 10, the first week in which the PHE data records a death within 28 days of a positive test for Covid-19 (week ending 6 March, ONS weekly reporting ends on a Friday).
-2. A <span class="bolded">Summer lull</span> starting in week 25 (w/e 19 June).
-3. A <span class="bolded">second wave</span> from week 38 (w/e 18 September) to week 17 2021 (w/e 30 April).
+To aid reporting, we have divided time since the pandemic began in to three periods to reflect two distinct waves of deaths separated by a 'Summer lull'.
 
-Table \@ref(tab:methods-xsdths-tab) compares the estimates of excess deaths from our three alternative approaches. There is no definitive answer to which approach provides the most accurate estimate of the pandemic's impact. However, we share the view of the Continuous Mortality Investigation (CMI), a research organisation supported by the UK actuarial profession, that the similarity between mortality in early-2019 and early-2020 presents a strong case for favouring the use of 2019 deaths as the benchmark for expected deaths in 2020 and 2021.[@continuous_mortality_investigation_england_2020]
+1. A <span class="bolded">first wave</span> that starts in week 10, the first week in which the PHE data records a death within 28 days of a positive test for Covid-19 (week ending 6th March, ONS weekly reporting ends on a Friday).
+2. A <span class="bolded">Summer lull</span> starting in week 25 (w/e 19th June).
+3. A <span class="bolded">second wave</span> from week 38 (w/e 18th September) to week 17 2021 (w/e 30th April).
+
+Table \@ref(tab:methods-xsdths-tab) compares the estimates of excess deaths from our three alternative approaches. There is no definitive answer to which approach provides the most accurate estimate of the pandemic's impact. However, we share the view of the Continuous Mortality Investigation (CMI) &mdash; a research organisation supported by the UK actuarial profession &mdash; that the similarity between mortality in early-2019 and early-2020 presents a strong case for favouring the use of 2019 deaths as the benchmark for expected deaths in 2020 and 2021.[@continuous_mortality_investigation_england_2020]
 
 >We estimate there have been `r print_num(totCovidDths, d = 0)` excess deaths in England from the start of the pandemic (by week 17 2021).
 
@@ -322,7 +353,7 @@ pandemic would otherwise have occurred in this period.
 + There may have been indirect impacts on deaths due to restrictions on movement and changes in
 behaviour during the pandemic (e.g. inability to access needed healthcare, reduced transmission of other viruses, reduced injuries, increases in mental health disorders, or less exposure to high levels of pollution).
 
-Figure \@ref(fig:non-covid-dths) shows non-Covid deaths alongside total all-cause deaths. The only time non-Covid deaths were above normal levels was in March and April last year. It is likely, at least in part, this difference was due to under-reporting of deaths from Covid-19. From April 2020 onward non-Covid-19 deaths have been running below normal levels. It is difficult to be certain about why this is but the increased size of the gap by the end of 2020 suggests there may have been some forward mortality displacement. That is, some of the people who died from Covid-19 in Spring 2020 would otherwise have died later in the year.
+Figure \@ref(fig:non-covid-dths) shows non-Covid deaths alongside total all-cause deaths. The only time non-Covid deaths were above normal levels was in March and April last year. It is likely, at least in part, this difference was due to under-reporting of deaths from Covid-19. From April 2020 onward non-Covid-19 deaths have been running below normal levels. It is difficult to be certain about why this is, but the increased size of the gap by the end of 2020 suggests there may have been some forward mortality displacement. That is, some of the people who died from Covid-19 in Spring 2020 would otherwise have died later in the year.
 
 ```{r non-covid-dths, fig.cap="The only time non-Covid-19 deaths were consistently above normal levels was in Spring 2020", fig.topcaption=TRUE}
 plotDat <- xsDthsSimple %>%
@@ -364,7 +395,7 @@ ggplot(plotDat) +
   theme(plot.subtitle = element_markdown())
 ```
 
-Figure \@ref(fig:covid-dths) shows excess deaths overlaid with deaths from Covid-19. The numbers of deaths represented by the shaded areas are summarised in Table \@ref(tab:xsDths-tab). In the first wave (ending in June 2020) there were 16 thousand more excess deaths than deaths where Covid-19 was mentioned on the death certificate. In the second wave this relationship was reversed, and there were more Covid-19 deaths than excess deaths.
+Figure \@ref(fig:covid-dths) shows excess deaths overlaid with deaths from Covid-19. The numbers of deaths represented by the shaded areas are summarised in Table \@ref(tab:xsDths-tab). In the first wave (ending in June 2020) there were 16,000 more excess deaths than deaths where Covid-19 was mentioned on the death certificate. In the second wave this relationship was reversed, and there were more Covid-19 deaths than excess deaths.
 
 ```{r covid-dths, fig.cap="During the second wave excess deaths were lower than deaths from Covid-19", fig.topcaption=TRUE}
 plotDat <- xsDthsSimple %>%
@@ -480,13 +511,17 @@ ggplot(plotDat) +
 ```
 
 # Mortality trends using standardised death rates
-The best way to compare mortality with earlier years is to examine age-standardised death rates: comparing raw death counts can be distorted by changes in population size and age structure. When used to facilitate comparison of changes in death rates over time age standardisation is most often used with annual data. However, the speed with which the coronavirus pandemic has unfolded means our preference is for a methodology that enables short-term monitoring of standardised rates. In 2018, with what now looks like remarkable prescience the CMI launched a regular report to monitor and describe sub-annual changes in population mortality.[@mortality_projections_committee_working_2019] The report takes the form of a quarterly update made available to subscribers (mainly actuarial consultancies, life offices, and reinsurers), and to researchers for non-commercial use. The broad approach adopted by the CMI is to:   
+The best way to compare mortality with earlier years is to examine age-standardised death rates: comparing raw death counts can be distorted by changes in population size and age structure. When used to facilitate comparison of changes in death rates over time age standardisation is most often used with annual data.
 
-+ use provisional weekly deaths data from the ONS
-+ standardise the mortality data to allow for changes in the size and age profile of the population
-+ produce various analyses, based on standardised mortality rates (SMRs), to highlight different features of recent mortality
+However, the speed with which the coronavirus pandemic has unfolded means our preference is for a methodology that enables short-term monitoring of standardised rates. In 2018, with what now looks like remarkable prescience the CMI launched a regular report to monitor and describe sub-annual changes in population mortality.[@mortality_projections_committee_working_2019] The report takes the form of a quarterly update made available to subscribers (mainly actuarial consultancies, life offices, and reinsurers), and to researchers for non-commercial use. The broad approach adopted by the CMI is to:   
 
-We have adapted the methods developed by the CMI (the ONS has used similar methods to compare mortality across European countries and regions[@noauthor_comparisons_nodate]) to produce our own analysis of standardised mortality rates.^[As far as is possible, we followed the methods described by the CMI. Any differences between the charts in this section and similar charts published by the CMI likely reflect small differences in population exposure calculations for the most recent years.] Figure \@ref(fig:dths-long-ts) shows the numbers of deaths, without any adjustments, each week from 2010. A less effective than usual flu vaccine contributed to the sharp peak in deaths during the Winter of 2014-15; Winter mortality was also elevated in 2017-18. Over the last decade, population growth and a slowdown in the rate of improvement in mortality rates have caused deaths to trend steadily upward.
++ use provisional weekly deaths data from the ONS;
++ standardise the mortality data to allow for changes in the size and age profile of the population; and
++ produce various analyses, based on standardised mortality rates (SMRs), to highlight different features of recent mortality.
+
+We have adapted the methods developed by the CMI (the ONS has used similar methods to compare mortality across European countries and regions[@noauthor_comparisons_nodate]) to produce our own analysis of standardised mortality rates.^[As far as is possible, we followed the methods described by the CMI. Any differences between the charts in this section and similar charts published by the CMI likely reflect small differences in population exposure calculations for the most recent years.]
+
+Figure \@ref(fig:dths-long-ts) shows the numbers of deaths, without any adjustments, each week from 2010. A less effective than usual flu vaccine contributed to the sharp peak in deaths during the Winter of 2014-15; Winter mortality was also elevated in 2017-18. Over the last decade, population growth and a slowdown in the rate of improvement in mortality rates have caused deaths to trend steadily upward.
 
 ```{r dths-long-ts, fig.cap="Population growth combined with a slowdown in the rate of improvement in mortality rates has seen the numbers of deaths creep upward over the past decade", fig.topcaption=TRUE}
 isoWksSeries <- tibble(
@@ -548,7 +583,9 @@ ggplot(plotDat) +
   theme(plot.subtitle = element_markdown())
 ```
 
-Figure \@ref(fig:qxSmr-grp-isoYr) takes the quarterly moving average SMR from Figure \@ref(fig:qxSmr) and overlays it by year. This display highlights two important features: firstly, relatively low mortality in the early part of 2020 and secondly, following the exceptionally high mortality in the second quarter of 2020, quarter three had the lowest mortality of any quarter on record. One possible cause of the very low mortality between July and September is that the pandemic led to a degree of 'mortality displacement'. Some particularly vulnerable individuals who died of Covid in the spring might otherwise have succumbed to alternate causes in the months that followed. Mortality displacement is a well described epidemiological concept and is often observed following environmental phenomena such as heat waves or spells of cold weather.
+Figure \@ref(fig:qxSmr-grp-isoYr) takes the quarterly moving average SMR from Figure \@ref(fig:qxSmr) and overlays it by year. This display highlights two important features: firstly, relatively low mortality in the early part of 2020 and secondly, following the exceptionally high mortality in the second quarter of 2020, quarter three had the lowest mortality of any quarter on record.
+
+One possible cause of the very low mortality between July and September is that the pandemic led to a degree of 'mortality displacement'. Some particularly vulnerable individuals who died of Covid in the spring might otherwise have succumbed to alternate causes in the months that followed. Mortality displacement is a well described epidemiological concept and is often observed following environmental phenomena such as heat waves or spells of cold weather.
 
 ```{r qxSmr-grp-isoYr, fig.cap="Following the exceptionally high mortality in Q2 of 2020, Q3 had the lowest mortality of any quarter on record", fig.topcaption=TRUE}
 plotdat <- smr15to85 %>%
@@ -570,7 +607,9 @@ ggplot(plotdat) +
        , subtitle = "Quarterly centred average SMRs, by week")
 ```
 
-The final chart in this section, Figure \@ref(fig:rcsmr) shows cumulative standardised mortality rates for the previous ten years, compared with the average for the period 2010-2019. All years, by definition, have a value of 0% at the start of the year as there has been no mortality at that point of the year; the year-end values show how mortality for each year as a whole compares to the 2010-2019 average; and intermediate points show how mortality has developed during the year, relative to the average. If mortality improvements had been constant throughout this period, then the lines for each year would form a 'fan', with the end-year values decreasing steadily from year to year. Mortality for complete calendar years was lowest in 2019 &mdash; finishing five percentage points below the ten-year average. Cumulative standardised mortality in the first quarter of 2020 was similar to 2019 and well below the ten-year average. From the end of March (week 13) mortality increased sharply and although it dipped in the third quarter it finished the year 8.1 per cent higher than the ten-year average.
+The final chart in this section, Figure \@ref(fig:rcsmr) shows cumulative standardised mortality rates for the previous ten years, compared with the average for the period 2010-2019. All years, by definition, have a value of 0% at the start of the year as there has been no mortality at that point of the year; the year-end values show how mortality for each year as a whole compares to the 2010-2019 average; and intermediate points show how mortality has developed during the year, relative to the average.
+
+If mortality improvements had been constant throughout this period, then the lines for each year would form a 'fan', with the end-year values decreasing steadily from year to year. Mortality for complete calendar years was lowest in 2019 &mdash; finishing five percentage points below the ten-year average. Cumulative standardised mortality in the first quarter of 2020 was similar to 2019 and well below the ten-year average. From the end of March (week 13) mortality increased sharply and although it dipped in the third quarter it finished the year 8.1 per cent higher than the ten-year average.
 
 ```{r rcsmr, fig.cap="After adjusting for changes in population size and age structure mortality in 2020 was 8.1 per cent higher than the ten-year average ", fig.topcaption=TRUE}
 plotDat <- rcSmr15to85 %>%
@@ -606,11 +645,11 @@ ggplot(plotDat) +
 ```
 
 # How many years of life have been lost to Covid-19?
-Most estimates of the effect of Covid-19 on population health have focused on numbers of deaths. Perhaps because the majority of people dying from Covid are older with underlying long-term conditions (LTCs), some commentators have opined that victims of Covid-19 would have likely died anyway within a short timeframe.
+Most estimates of the effect of Covid-19 on population health have focused on numbers of deaths. Perhaps because the majority of people dying from Covid are older with underlying long-term conditions (LTCs), some commentators have argued that victims of Covid-19 would have likely died anyway within a short timeframe.
 
 >... by the end of the year what proportion of people who died from Covid‑19 would have died anyhow? It might be as much as half to two thirds of the deaths we are seeing from Covid‑19 because it affects particularly people who are either at the end of their life or with prior health conditions.[@noauthor_oral_2020]
 <br>
-<span class="bqname">~ Professor Neil Ferguson, House of Commons Science and Technology Committee, 25 March 2020</span>
+<span class="bqname">~ Professor Neil Ferguson, House of Commons Science and Technology Committee, 25th March 2020</span>
 
 ```{r rep-covid-dths-by-age-grp, fig.cap=str_c(print_num(pct75Plus), " of deaths involving Covid-19 have been among those aged 75 years and older"), fig.topcaption=TRUE}
 treemapDat <- covidAgeGrpDths %>%
@@ -629,13 +668,21 @@ ggplot(treemapDat, aes(area = dths, fill = ageGrp, label = ageGrp)) +
   theme(plot.subtitle = element_text(margin = margin(b = 12, unit = "pt")))
 ```
 
-However, while old-age and the presence of multiple LTCs is associated with raised mortality the average 80-year-old male can still expect another 8.7 years of life; for women it is another 10 years.[@noauthor_single-year_nodate] A truer measure of the overall burden of Covid-19 on population mortality is years of *potential* life lost. Years of life lost (YLL) is a summary measure of premature mortality often used in public health planning to compare the relative burden of mortality from different diseases or to allow fair comparison of the impact of different health policies. At the level of the individual, YLL is calculated as time lost based on the difference between age at death and the standard life expectancy at that age (obtained from life tables). For example, a woman dying at age 65 loses 21 years of potential life &mdash; the conditional life expectancy for a female having reached age 65 is 86.[@noauthor_single-year_nodate]
+However, while old-age and the presence of multiple LTCs is associated with raised mortality the average 80-year-old male can still expect another 8.7 years of life; for women it is another 10 years.[@noauthor_single-year_nodate]
+
+A truer measure of the overall burden of Covid-19 on population mortality is years of *potential* life lost. Years of life lost (YLL) is a summary measure of premature mortality often used in public health planning to compare the relative burden of mortality from different diseases or to allow fair comparison of the impact of different health policies.
+
+At the level of the individual, YLL is calculated as time lost based on the difference between age at death and the standard life expectancy at that age (obtained from life tables). For example, a woman dying at age 65 loses 21 years of potential life &mdash; the conditional life expectancy for a female having reached age 65 is 86.[@noauthor_single-year_nodate]
 
 Following the conventional approach to estimating YLL, we used relative frequencies on the age at which deaths from Covid-19 occurred combined with typical life expectancy at a given age (from standard life tables) to estimate a weighted average loss associated with a Covid-19 death in England & Wales (see Table \@ref(tab:yll-tab)). For broad UK comparisons, total YLL from stroke was estimated at 626 thousand by the Global Burden of Disease study in 2019.
 
 >Using standard life tables for England & Wales, we estimate `r print_num(yllTot / 1e6, d = 2)` million years of life have been lost to Covid (week `r recentWk` 2021).
 
-In using national life tables, we have implicitly assumed that the comorbidity burden by age among Covid-19 victims is similar to that of the general population. This is a standard assumption when calculating YLL by cause. Here, it is important to remember that among the age groups most affected by Covid, many people will have some form of 'existing condition'. For example, the 2019 Health Survey for England shows that among those aged 75 and over, 66% have hypertension, 22% have diabetes, and 26% are obese.[@noauthor_health_nodate] Adjusting for the number and type of underlying conditions is, however, technically difficult and requires good estimates of co-morbidity among Covid-19 victims as well as survival data for the reference population. Combining data on the prevalence and co-occurrence of long-term conditions among a cohort of patients who had died from Covid-19 in Italy with information on survival from a UK research database researchers were able to estimate YLL accounting for number and type of underlying LTC.[@hanlon_covid-19_2021] They found mean YLL remained high even after adjustment for number and type of LTCs &mdash; 11.6 and 9.4 years for men and women, respectively, compared to 14 and 12 years before adjustment.
+In using national life tables, we have implicitly assumed that the comorbidity burden by age among Covid-19 victims is similar to that of the general population. This is a standard assumption when calculating YLL by cause. Here, it is important to remember that among the age groups most affected by Covid, many people will have some form of 'existing condition'. For example, the 2019 Health Survey for England shows that among those aged 75 and over, 66% have hypertension, 22% have diabetes, and 26% are obese.[@noauthor_health_nodate]
+
+Adjusting for the number and type of underlying conditions is, however, technically difficult and requires good estimates of co-morbidity among Covid-19 victims as well as survival data for the reference population.
+
+Combining data on the prevalence and co-occurrence of long-term conditions among a cohort of patients who had died from Covid-19 in Italy with information on survival from a UK research database researchers were able to estimate YLL accounting for number and type of underlying LTC.[@hanlon_covid-19_2021] They found mean YLL remained high even after adjustment for number and type of LTCs &mdash; 11.6 and 9.4 years for men and women, respectively, compared to 14 and 12 years before adjustment.
 
 ```{r yll-tab, tab.cap="Deaths and estimated years of life lost from Covid-19"}
 dthsWv <- onsDths %>%
@@ -722,11 +769,17 @@ icnarcMeasures %>%
   # save_kable(file = str_c(.figDir, "icnarc-tab.png"))
 ```
 
-Some vulnerable individuals who died of Covid-19 might otherwise have died from alternate causes: a concept known as 'mortality displacement'. If the residual life expectancy for a significant number of Covid-19 victims was no longer than several months, then one might expect to find evidence of mortality displacement in aggregate mortality data. This would most likely appear as a compensatory period of lower-than-expected mortality from other causes. While age-standardised mortality rates did fall to historic lows during the third quarter of 2020 the scale of reduction was small compared to the extent of the spring peak. More recently, during the second wave, non-Covid deaths (see Figure \@ref(fig:non-covid-dths)) have been lower than would have been expected in the absence of the pandemic. Again, this observation is consistent with some mortality displacement but is not of a scale that suggests large numbers of people dying in the first wave would otherwise have succumbed to other causes within a very short time frame.
+Some vulnerable individuals who died of Covid-19 might otherwise have died from alternate causes: a concept known as 'mortality displacement'. If the residual life expectancy for a significant number of Covid-19 victims was no longer than several months, then one might expect to find evidence of mortality displacement in aggregate mortality data. This would most likely appear as a compensatory period of lower-than-expected mortality from other causes.
+
+While age-standardised mortality rates did fall to historic lows during the third quarter of 2020 the scale of reduction was small compared to the extent of the spring peak. More recently, during the second wave, non-Covid deaths (see Figure \@ref(fig:non-covid-dths)) have been lower than would have been expected in the absence of the pandemic. Again, this observation is consistent with some mortality displacement but is not of a scale that suggests large numbers of people dying in the first wave would otherwise have succumbed to other causes within a very short time frame.
 
 # What has been the effect of Covid-19 on life expectancy?
 Life expectancy at birth is another commonly used indicator of population health. Period life expectancy is the average number of years a hypothetical newborn is expected to survive if their entire life, from birth to death, is lived under the mortality
-conditions prevailing in the current year. Figure \@ref(fig:life-expectancy) shows that following an extended period of steady increases, the rate of improvement in life expectancy slowed from around 2011. The most recent national statistics put life expectancy at birth in England & Wales at 79.8 years for men and 83.5 years for women (these figures precede any effect of the coronavirus pandemic).[@noauthor_single-year_nodate] We estimated life expectancy at birth for England & Wales for the calendar year 2020 by aggregating ONS age-group weekly death registrations and calculating death rates using a mid-2020 population estimate. Life expectancy in 2020 was `r print_num(le20M, d = 1)` years for men and `r print_num(le20F, d = 1)` years for women &mdash; a reduction of `r print_num(le20MChg, d = 1)` years and `r print_num(le20FChg, d = 1)` years, respectively. However, in the context of epidemic mortality it should be remembered that the calculation of period life expectancy at birth implicitly assumes the epidemic is experienced in all future years as a person ages.
+conditions prevailing in the current year.
+
+Figure \@ref(fig:life-expectancy) shows that following an extended period of steady increases, the rate of improvement in life expectancy slowed from around 2011. The most recent national statistics put life expectancy at birth in England & Wales at 79.8 years for men and 83.5 years for women (these figures precede any effect of the coronavirus pandemic).[@noauthor_single-year_nodate]
+
+We estimated life expectancy at birth for England & Wales for the calendar year 2020 by aggregating ONS age-group weekly death registrations and calculating death rates using a mid-2020 population estimate. Life expectancy in 2020 was `r print_num(le20M, d = 1)` years for men and `r print_num(le20F, d = 1)` years for women &mdash; a reduction of `r print_num(le20MChg, d = 1)` years and `r print_num(le20FChg, d = 1)` years, respectively. However, in the context of epidemic mortality it should be remembered that the calculation of period life expectancy at birth implicitly assumes the epidemic is experienced in all future years as a person ages.
 
 ```{r life-expectancy, fig.cap=str_c("Life expectancy in 2020 fell by", print_num(le20FChg, d = 1), "years for women and", print_num(le20MChg, d = 1), "years for men", sep = " "), fig.topcaption=TRUE}
 gender_label <- c("f" = "Women", "m" = "Men")
