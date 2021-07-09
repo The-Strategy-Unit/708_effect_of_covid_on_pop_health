@@ -314,7 +314,7 @@ To aid reporting, we have divided time since the pandemic began in to three peri
 
 Table \@ref(tab:methods-xsdths-tab) compares the estimates of excess deaths from our three alternative approaches. There is no definitive answer to which approach provides the most accurate estimate of the pandemic's impact. However, we share the view of the Continuous Mortality Investigation (CMI) &mdash; a research organisation supported by the UK actuarial profession &mdash; that the similarity between mortality in early-2019 and early-2020 presents a strong case for favouring the use of 2019 deaths as the benchmark for expected deaths in 2020 and 2021.[@continuous_mortality_investigation_england_2020]
 
->We estimate there have been `r print_num(totCovidDths, d = 0)` excess deaths in England from the start of the pandemic (by week 17 2021).
+>We estimate there have been `r print_num(totCovidDths, d = 0)` excess deaths in England & Wales from the start of the pandemic (by week 17 2021).
 
 ```{r methods-xsdths-tab, fig.cap="Different methods for estimating excess deaths arrive at broadly similar results"}
 tabDat <- xsDthsSumTb %>% 
