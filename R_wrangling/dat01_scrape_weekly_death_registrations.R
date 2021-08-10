@@ -27,7 +27,7 @@ Sys.time()
 # 1 scrape pre-2020 datasets --------------------------------------------------
 # weekly death registrations 
 wkDthReg_html <- read_html("https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/weeklyprovisionalfiguresondeathsregisteredinenglandandwales")
-linkId <- "weeklyprovisionalfiguresondeathsregisteredinenglandandwales/([0-9]{4})/publishedweek([0-9]{4}|[0-9]{6}).*xls"
+linkId <- "weeklyprovisionalfiguresondeathsregisteredinenglandandwales%2f([0-9]{4})/publishedweek([0-9]{4}|[0-9]{6}).*xls"
 
 # discover link destinations for annual datasets
 wkDthReg_links <- html_nodes(wkDthReg_html, css = "a") %>% html_attr("href")

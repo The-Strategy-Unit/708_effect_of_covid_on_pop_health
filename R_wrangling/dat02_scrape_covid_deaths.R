@@ -25,7 +25,7 @@ Sys.time()
 
 # 1 scrape daily deaths -------------------------------------------------------
 # deaths within 28 days of positive test by date of death
-govDths <- read_csv(str_c(.rawDir, "data_2021-May-24.csv"))
+govDths <- read_csv(str_c(.rawDir, "data_2021-Aug-10.csv"))
 
 govDths <- govDths %>%
   filter(areaName %in% c("England", "Wales")) %>% 
@@ -43,7 +43,7 @@ govDths <- govDths %>%
 
 # 2 scrape hospital deaths ----------------------------------------------------
 # Covid-19 total announced deaths
-path     <- str_c(.rawDir, "COVID-19-total-announced-deaths-24-May-2021.xlsx")
+path     <- str_c(.rawDir, "COVID-19-total-announced-deaths-10-August-2021.xlsx")
 sheets   <- excel_sheets(path)
 sheets   <- sheets[str_detect(sheets, "^Tab1 Deaths by region")]
 nhseDths <- read_then_csv(sheets, skip_n = 14, n_max = 2, path = path)
